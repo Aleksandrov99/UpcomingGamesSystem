@@ -6,11 +6,10 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using UpcomingGamesSystem.Data.Common.Models;
-    using UpcomingGamesSystem.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using UpcomingGamesSystem.Data.Common.Models;
+    using UpcomingGamesSystem.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -25,6 +24,10 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Game> Games { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

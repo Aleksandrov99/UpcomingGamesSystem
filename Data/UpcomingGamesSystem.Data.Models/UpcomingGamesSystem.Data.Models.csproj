@@ -22,5 +22,9 @@
   <ItemGroup>
     <ProjectReference Include="..\UpcomingGamesSystem.Data.Common\UpcomingGamesSystem.Data.Common.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
   
 </Project>
