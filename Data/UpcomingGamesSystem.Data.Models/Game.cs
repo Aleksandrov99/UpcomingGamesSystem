@@ -11,6 +11,9 @@
         [MaxLength(100)]
         public string Title { get; set; }
 
+        [Required]
+        public string PictureUrl { get; set; }
+
         public DateTime ReleaseDate { get; set; }
 
         [Required]

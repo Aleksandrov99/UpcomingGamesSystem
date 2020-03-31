@@ -1,0 +1,40 @@
+﻿@model UpcomingGamesSystem.Web.ViewModels.Games.GamesCreateInputModel
+@{
+    this.ViewData["Title"] = "Create Game Page";
+    var categories = Model.Categories.Select(x => new SelectListItem(x.Name, x.Id.ToString()));
+}
+
+    <form method="post" asp-action="Create">
+        <div>
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="PictureUrl"></label>
+            <input asp-for="PictureUrl" class="form-control" />
+            <span asp-validation-for="PictureUrl" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="ReleaseDate"></label>
+            <input asp-for="ReleaseDate" class="form-control" />
+            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="CompanyName"></label>
+            <input asp-for="CompanyName" class="form-control" />
+            <span asp-validation-for="CompanyName" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="CategoryId"></label>
+            <select asp-for="CategoryId" asp-items="categories" class="form-control"></select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <hr />
+        <input type="submit" class="btn btn-primary" />
+    </form>

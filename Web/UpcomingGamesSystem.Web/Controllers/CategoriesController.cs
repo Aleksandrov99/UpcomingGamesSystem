@@ -2,7 +2,6 @@
 {
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using UpcomingGamesSystem.Data.Models;
@@ -12,7 +11,6 @@
 
     public class CategoriesController : Controller
     {
-        private readonly IMapper mapper;
         private readonly ICategoriesService categoriesService;
 
         public CategoriesController(ICategoriesService categoriesService)
@@ -38,7 +36,7 @@
 
             await this.categoriesService.Create(input.Name);
 
-            return this.Redirect("/Index");
+            return this.Redirect("/Home/Index");
         }
     }
 }
