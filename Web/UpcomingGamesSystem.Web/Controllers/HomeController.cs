@@ -2,9 +2,8 @@
 {
     using System.Diagnostics;
 
-    using UpcomingGamesSystem.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
+    using UpcomingGamesSystem.Web.ViewModels;
 
     public class HomeController : BaseController
     {

@@ -1,9 +1,8 @@
 ﻿namespace UpcomingGamesSystem.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using UpcomingGamesSystem.Data.Models;
     using UpcomingGamesSystem.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

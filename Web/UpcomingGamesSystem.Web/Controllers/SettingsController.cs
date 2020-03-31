@@ -3,12 +3,11 @@
     using System;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using UpcomingGamesSystem.Data.Common.Repositories;
     using UpcomingGamesSystem.Data.Models;
     using UpcomingGamesSystem.Services.Data;
     using UpcomingGamesSystem.Web.ViewModels.Settings;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
     {
