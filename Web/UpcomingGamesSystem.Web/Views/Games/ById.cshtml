@@ -1,0 +1,28 @@
+﻿@model UpcomingGamesSystem.Web.ViewModels.Games.GameViewModel
+@using UpcomingGamesSystem.Common
+@{
+    this.ViewData["Title"] = "Game Page";
+}
+
+    <div class="container">
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="@Model.PictureUrl">
+        </div>
+        <hr />
+        <div>
+            <div class="info-title">Game</div>
+            <h1>@Model.Title</h1>
+        </div>
+        <div>
+            <div class="info-title">Release Date</div>
+            <h1>@Model.ReleaseDate</h1>
+        </div>
+        <div>
+            <div class="info-title">Publisher</div>
+            <h1>@Model.CompanyName</h1>
+        </div>
+        <div>
+            <div class="info-title">Description</div>
+            <h1>@Model.Description</h1>
+        </div>
+    </div>

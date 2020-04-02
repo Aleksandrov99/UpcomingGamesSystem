@@ -17,7 +17,7 @@
             this.categoryRepository = categoryRepository;
         }
 
-        public async Task Create(string categoryName)
+        public async Task CreateAsync(string categoryName)
         {
             var category = new Category
             {

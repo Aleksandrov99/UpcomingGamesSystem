@@ -5,7 +5,7 @@
 
     public interface ICategoriesService
     {
-        Task Create(string categoryName);
+        Task CreateAsync(string categoryName);
 
         IEnumerable<T> GetAllCategories<T>();
     }

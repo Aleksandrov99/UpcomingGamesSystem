@@ -3,13 +3,23 @@
     using System.Diagnostics;
 
     using Microsoft.AspNetCore.Mvc;
+    using UpcomingGamesSystem.Services.Data;
     using UpcomingGamesSystem.Web.ViewModels;
 
     public class HomeController : BaseController
     {
+        private readonly IGamesService gamesService;
+
+        public HomeController(IGamesService gamesService)
+        {
+            this.gamesService = gamesService;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            var games = this.gamesService.GetAllGames();
+
+            return this.View(games);
         }
 
         public IActionResult Privacy()

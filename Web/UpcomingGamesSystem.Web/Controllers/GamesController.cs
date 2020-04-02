@@ -43,9 +43,21 @@
                 return this.View(input);
             }
 
-            await this.gamesService.Create(input.Title, input.PictureUrl, input.ReleaseDate, input.CompanyName, input.Description, input.CategoryId);
+            await this.gamesService.CreateAsync(input.Title, input.PictureUrl, input.ReleaseDate, input.CompanyName, input.Description, input.CategoryId);
 
             return this.Redirect("/Home/Index");
+        }
+
+        public IActionResult ById(int id)
+        {
+            var gameViewModel = this.gamesService.GetGameById(id);
+
+            if (gameViewModel == null)
+            {
+                return this.Redirect("/");
+            }
+
+            return this.View(gameViewModel);
         }
     }
 }

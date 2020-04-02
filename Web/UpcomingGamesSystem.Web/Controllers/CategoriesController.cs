@@ -34,7 +34,7 @@
                 return this.View(input);
             }
 
-            await this.categoriesService.Create(input.Name);
+            await this.categoriesService.CreateAsync(input.Name);
 
             return this.Redirect("/Home/Index");
         }

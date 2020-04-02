@@ -1,5 +1,26 @@
-﻿@using UpcomingGamesSystem.Common
+﻿@model UpcomingGamesSystem.Web.ViewModels.Games.AllGamesViewModel
+@using UpcomingGamesSystem.Common
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
+<div class="text-center">
+    <h1>Don't find your favorite game, you could add it here:</h1>
+    <a asp-controller="Games" asp-action="Create" class="btn btn-primary">Add a Game.</a>
+</div>
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var game in Model.Games)
+        {
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@game.PictureUrl">
+                <div class="card-body">
+                    <h5 class="card-title">@game.Title</h5>
+                    <p class="card-text">@game.ReleaseDate</p>
+                    <a asp-controller="Games" asp-action="ById" asp-route-id="@game.Id" class="btn btn-primary">Go to Game page.</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
