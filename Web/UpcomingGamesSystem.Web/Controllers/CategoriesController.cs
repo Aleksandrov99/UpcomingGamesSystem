@@ -4,9 +4,7 @@
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using UpcomingGamesSystem.Data.Models;
     using UpcomingGamesSystem.Services.Data;
-    using UpcomingGamesSystem.Services.Mapping;
     using UpcomingGamesSystem.Web.ViewModels.Categories;
 
     public class CategoriesController : Controller
@@ -28,7 +26,6 @@
         [Authorize]
         public async Task<IActionResult> Create(CategoriesCreateInputModel input)
         {
-            var category = AutoMapperConfig.MapperInstance.Map<Category>(input);
             if (!this.ModelState.IsValid)
             {
                 return this.View(input);

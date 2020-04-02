@@ -4,6 +4,13 @@
     this.ViewData["Title"] = "Home Page";
 }
 
+<div class="container mt-3">
+    <h2>Find your game</h2>
+    <p>Type something in the input field to search for the game that you want to find:</p>
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <hr />
+</div>
+
 <div class="text-center">
     <h1>Don't find your favorite game, you could add it here:</h1>
     <a asp-controller="Games" asp-action="Create" class="btn btn-primary">Add a Game.</a>
@@ -13,14 +20,34 @@
     <div class="row">
         @foreach (var game in Model.Games)
         {
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@game.PictureUrl">
-                <div class="card-body">
-                    <h5 class="card-title">@game.Title</h5>
-                    <p class="card-text">@game.ReleaseDate</p>
-                    <a asp-controller="Games" asp-action="ById" asp-route-id="@game.Id" class="btn btn-primary">Go to Game page.</a>
+        <ul class="list-group" id="myList">
+            <li class="list-group-item">
+                <div class="card" style="width: 18rem" id="myList">
+                    <img class="card-img-top" src="@game.PictureUrl">
+                    <div class="card-body">
+
+                        <h5 class="card-title">@game.Title</h5>
+                        <p class="card-text">@game.ReleaseDate</p>
+                        <a asp-controller="Games" asp-action="ById" asp-route-id="@game.Id" class="btn btn-primary">Go to Game page.</a>
+
+
+                    </div>
                 </div>
-            </div>
+            </li>
+        </ul>
         }
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myList li").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}

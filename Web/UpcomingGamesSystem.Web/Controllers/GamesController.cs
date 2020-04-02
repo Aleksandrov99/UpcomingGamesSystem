@@ -4,9 +4,7 @@
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using UpcomingGamesSystem.Data.Models;
     using UpcomingGamesSystem.Services.Data;
-    using UpcomingGamesSystem.Services.Mapping;
     using UpcomingGamesSystem.Web.ViewModels.Categories;
     using UpcomingGamesSystem.Web.ViewModels.Games;
 
@@ -37,7 +35,6 @@
         [Authorize]
         public async Task<IActionResult> Create(GamesCreateInputModel input)
         {
-            var game = AutoMapperConfig.MapperInstance.Map<Game>(input);
             if (!this.ModelState.IsValid)
             {
                 return this.View(input);
