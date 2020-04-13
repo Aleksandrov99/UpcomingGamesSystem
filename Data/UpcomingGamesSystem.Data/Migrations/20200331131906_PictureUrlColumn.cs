@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace UpcomingGamesSystem.Data.Migrations
+﻿namespace UpcomingGamesSystem.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class PictureUrlColumn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -10,7 +10,7 @@ namespace UpcomingGamesSystem.Data.Migrations
                 name: "PictureUrl",
                 table: "Games",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: string.Empty);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

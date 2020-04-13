@@ -1,15 +1,13 @@
 ﻿@model UpcomingGamesSystem.Web.ViewModels.Games.AllGamesViewModel
-@using UpcomingGamesSystem.Common
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
-<div class="container mt-3">
-    <h2>Find your game</h2>
-    <p>Type something in the input field to search for the game that you want to find:</p>
-    <input class="form-control" id="myInput" type="text" placeholder="Search..">
-    <hr />
-</div>
+    <div class="container mt-3">
+        <h2>Find your game</h2>
+        <input class="form-control" id="myInput" type="text" placeholder="Game name..">
+        <hr />
+    </div>
 
 <div class="text-center">
     <h1>Don't find your favorite game, you could add it here:</h1>
@@ -17,20 +15,17 @@
 </div>
 <hr />
 <div class="container-fluid">
-    <div class="row">
+    <div class="card-group">
         @foreach (var game in Model.Games)
         {
         <ul class="list-group" id="myList">
             <li class="list-group-item">
-                <div class="card" style="width: 18rem" id="myList">
-                    <img class="card-img-top" src="@game.PictureUrl">
+                <div class="card" style="max-width: 18rem;" id="myList">
+                    <img class="card-img-top" src="@game.PictureUrl" height="140" width="42">
                     <div class="card-body">
-
                         <h5 class="card-title">@game.Title</h5>
-                        <p class="card-text">@game.ReleaseDate</p>
+                        <p class="card-text">Release Date: @game.ReleaseDate.ToString("dd-MM-yyyy")</p>
                         <a asp-controller="Games" asp-action="ById" asp-route-id="@game.Id" class="btn btn-primary">Go to Game page.</a>
-
-
                     </div>
                 </div>
             </li>

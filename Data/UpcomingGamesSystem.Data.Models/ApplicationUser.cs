@@ -4,9 +4,8 @@ namespace UpcomingGamesSystem.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using UpcomingGamesSystem.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using UpcomingGamesSystem.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {

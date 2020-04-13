@@ -4,15 +4,12 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
+    using Moq;
     using UpcomingGamesSystem.Data;
     using UpcomingGamesSystem.Data.Common.Repositories;
     using UpcomingGamesSystem.Data.Models;
     using UpcomingGamesSystem.Data.Repositories;
-
-    using Microsoft.EntityFrameworkCore;
-
-    using Moq;
-
     using Xunit;
 
     public class SettingsServiceTests

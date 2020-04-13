@@ -3,9 +3,8 @@ namespace UpcomingGamesSystem.Data.Models
 {
     using System;
 
-    using UpcomingGamesSystem.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using UpcomingGamesSystem.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

@@ -1,28 +1,26 @@
 ﻿@model UpcomingGamesSystem.Web.ViewModels.Games.GameViewModel
-@using UpcomingGamesSystem.Common
 @{
     this.ViewData["Title"] = "Game Page";
 }
 
-    <div class="container">
-        <div class="card" style="width: 20rem;">
-            <img class="card-img-top" src="@Model.PictureUrl">
-        </div>
-        <hr />
-        <div>
-            <div class="info-title">Game</div>
-            <h1>@Model.Title</h1>
-        </div>
-        <div>
-            <div class="info-title">Release Date</div>
-            <h1>@Model.ReleaseDate</h1>
-        </div>
-        <div>
-            <div class="info-title">Publisher</div>
-            <h1>@Model.CompanyName</h1>
-        </div>
-        <div>
-            <div class="info-title">Description</div>
-            <h1>@Model.Description</h1>
+    
+    <div class="card mb-3" style="max-width: 3000px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="@Model.PictureUrl" class="card-img" height="320">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title" style="text-align: center">@Model.Title</h1>
+                    <h5 class="card-text">Category: @Model.CategoryName</h5>
+                    <h5 class="card-text">Description:</h5>
+                    <h5 class="card-text">@Model.Description</h5>
+                    <h5 style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: left;">Publisher: @Model.CompanyName </h5>
+                    <h5 style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: right;">Release Date: @Model.ReleaseDate.ToString("dd-MM-yyyy")</h5>
+                </div>
+            </div>
         </div>
     </div>
+
+    
+       

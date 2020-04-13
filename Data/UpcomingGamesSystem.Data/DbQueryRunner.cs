@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using UpcomingGamesSystem.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using UpcomingGamesSystem.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

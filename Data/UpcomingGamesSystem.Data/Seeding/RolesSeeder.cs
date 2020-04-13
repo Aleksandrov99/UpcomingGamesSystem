@@ -4,11 +4,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using UpcomingGamesSystem.Common;
-    using UpcomingGamesSystem.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+    using UpcomingGamesSystem.Common;
+    using UpcomingGamesSystem.Data.Models;
 
     internal class RolesSeeder : ISeeder
     {

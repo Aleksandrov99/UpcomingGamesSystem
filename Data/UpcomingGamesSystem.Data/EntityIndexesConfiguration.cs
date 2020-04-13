@@ -2,9 +2,8 @@
 {
     using System.Linq;
 
-    using UpcomingGamesSystem.Data.Common.Models;
-
     using Microsoft.EntityFrameworkCore;
+    using UpcomingGamesSystem.Data.Common.Models;
 
     internal static class EntityIndexesConfiguration
     {

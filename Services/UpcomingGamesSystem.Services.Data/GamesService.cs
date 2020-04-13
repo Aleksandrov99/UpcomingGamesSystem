@@ -66,6 +66,7 @@
                     ReleaseDate = x.ReleaseDate,
                     CompanyName = x.CompanyName,
                     Description = x.Description,
+                    CategoryName = x.Category.Name,
                 }).FirstOrDefault();
 
             return game;

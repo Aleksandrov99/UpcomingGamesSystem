@@ -5,6 +5,11 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using CommandLine;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     using UpcomingGamesSystem.Data;
     using UpcomingGamesSystem.Data.Common;
     using UpcomingGamesSystem.Data.Common.Repositories;
@@ -13,13 +18,6 @@
     using UpcomingGamesSystem.Data.Seeding;
     using UpcomingGamesSystem.Services.Data;
     using UpcomingGamesSystem.Services.Messaging;
-
-    using CommandLine;
-
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
 
     public static class Program
     {
