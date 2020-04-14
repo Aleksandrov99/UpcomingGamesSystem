@@ -16,14 +16,14 @@
             this.categoriesService = categoriesService;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return this.View();
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create(CategoriesCreateInputModel input)
         {
             if (!this.ModelState.IsValid)

@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace UpcomingGamesSystem.Data.Migrations
+﻿namespace UpcomingGamesSystem.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class CommentsSection : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +20,7 @@ namespace UpcomingGamesSystem.Data.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     GameId = table.Column<int>(nullable: false),
                     Content = table.Column<string>(maxLength: 100, nullable: false),
-                    UserId = table.Column<string>(nullable: false)
+                    UserId = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\UpcomingGamesSystem.Data.Common\UpcomingGamesSystem.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\UpcomingGamesSystem.Data.Models\UpcomingGamesSystem.Data.Models.csproj" />
+    <ProjectReference Include="..\..\UpcomingGamesSystem.Common\UpcomingGamesSystem.Common.csproj" />
     <ProjectReference Include="..\..\Web\UpcomingGamesSystem.Web.ViewModels\UpcomingGamesSystem.Web.ViewModels.csproj" />
     <ProjectReference Include="..\UpcomingGamesSystem.Services.Mapping\UpcomingGamesSystem.Services.Mapping.csproj" />
   </ItemGroup>
