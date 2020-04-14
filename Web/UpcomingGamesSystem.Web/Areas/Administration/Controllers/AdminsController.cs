@@ -28,7 +28,30 @@
                 return this.View(input);
             }
 
-            return this.Redirect("/");
+            return this.Redirect("/Administration/Admins/All");
+        }
+
+        public IActionResult RemoveRole()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveRole(AdminInputModel input)
+        {
+            if ((await this.adminsServices.RemoveFromRoleAsync(input.UserName)) == false)
+            {
+                return this.View(input);
+            }
+
+            return this.Redirect("/Administration/Admins/All");
+        }
+
+        public IActionResult All()
+        {
+            var admins = this.adminsServices.GetAllAdmins();
+
+            return this.View(admins);
         }
     }
 }

@@ -1,0 +1,14 @@
+﻿@model UpcomingGamesSystem.Web.ViewModels.Administration.AllAdminsViewModel
+@{
+    ViewData["Title"] = "All";
+}
+
+@foreach (var admin in Model.Admins)
+{
+    <div>
+        <h5>@admin.UserName</h5>
+        <hr />
+    </div>
+}
+<a asp-controller="Admins" asp-action="RemoveRole" class="btn btn-primary">Demote to User.</a>
+

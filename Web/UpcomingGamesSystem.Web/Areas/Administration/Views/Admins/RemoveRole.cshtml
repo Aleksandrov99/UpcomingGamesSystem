@@ -1,0 +1,17 @@
+﻿@model UpcomingGamesSystem.Web.ViewModels.Administration.AdminInputModel
+@{
+    ViewData["Title"] = "Remove from Role";
+}
+
+<form method="post" asp-action="RemoveRole">
+    <h1>Demote Admin to User!</h1>
+    <hr />
+    <div>
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+    <hr />
+    <input type="submit" class="btn btn-primary" />
+</form>
+

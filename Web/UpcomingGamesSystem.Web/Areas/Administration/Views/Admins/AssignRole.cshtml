@@ -1,17 +1,19 @@
 ﻿@model UpcomingGamesSystem.Web.ViewModels.Administration.AdminInputModel
 @{
-    ViewData["Title"] = "AssignRole";
+    ViewData["Title"] = "Assign to Role";
 }
 
-<form method="post" asp-action="AssignRole">
-    <h1>Promote user to Admin!</h1>
-    <hr />
-    <div>
-        <label asp-for="UserName"></label>
-        <input asp-for="UserName" class="form-control" />
-        <span asp-validation-for="UserName" class="text-danger"></span>
-    </div>
-    <hr />
-    <input type="submit" class="btn btn-primary" />
-</form>
+    <form method="post" asp-action="AssignRole">
+        <h1>Promote user to Admin!</h1>
+        <hr />
+        <div>
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <hr />
+        <input type="submit" class="btn btn-primary" />
+
+        <a asp-controller="Admins" asp-action="All" class="btn btn-primary">List of all Admins.</a>
+    </form>
 
