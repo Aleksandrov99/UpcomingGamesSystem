@@ -1,9 +1,11 @@
 ﻿namespace UpcomingGamesSystem.Web.ViewModels.Games
 {
     using System;
+    using System.Collections.Generic;
 
     using UpcomingGamesSystem.Data.Models;
     using UpcomingGamesSystem.Services.Mapping;
+    using UpcomingGamesSystem.Web.ViewModels.Comments;
 
     public class GameViewModel : IMapFrom<Game>
     {
@@ -20,5 +22,7 @@
         public string Description { get; set; }
 
         public string CategoryName { get; set; }
+
+        public IEnumerable<CommentViewModel> Comments { get; set; }
     }
 }

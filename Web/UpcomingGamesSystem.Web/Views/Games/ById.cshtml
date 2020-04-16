@@ -1,26 +1,61 @@
-﻿@model UpcomingGamesSystem.Web.ViewModels.Games.GameViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@using UpcomingGamesSystem.Data.Models
+@using System.Threading.Tasks;
+@model UpcomingGamesSystem.Web.ViewModels.Games.GameViewModel
+@inject UserManager<ApplicationUser> UserManager
 @{
     this.ViewData["Title"] = "Game Page";
 }
 
-    
-    <div class="card mb-3" style="max-width: 3000px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="@Model.PictureUrl" class="card-img" height="320">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h1 class="card-title" style="text-align: center">@Model.Title</h1>
-                    <h5 class="card-text">Category: @Model.CategoryName</h5>
-                    <h5 class="card-text">Description:</h5>
-                    <h5 class="card-text">@Model.Description</h5>
-                    <h5 style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: left;">Publisher: @Model.CompanyName </h5>
-                    <h5 style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: right;">Release Date: @Model.ReleaseDate.ToString("dd-MM-yyyy")</h5>
-                </div>
+
+<div class="card mb-3" style="max-width: 3000px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="@Model.PictureUrl" class="card-img" height="300">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h1 class="card-title" style="text-align: center">@Model.Title</h1>
+                <h5 class="card-text">Category: @Model.CategoryName</h5>
+                <h5 class="card-text">Description:</h5>
+                <h5 class="card-text">@Model.Description</h5>
+                <h5 style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: left;">Publisher: @Model.CompanyName </h5>
+                <h5 style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: right;">Release Date: @Model.ReleaseDate.ToString("dd-MM-yyyy")</h5>
             </div>
         </div>
     </div>
+</div>
+<div>
+    <form asp-controller="Comments" asp-action="CreateComment" method="post">
+        <input type="hidden" name="GameId" value="@this.Model.Id" />
+        <input type="hidden" name="UserId" value="@this.UserManager.GetUserId(this.User)" />
+        <div class="form-group">
+            <label for="Content"></label>
+            <textarea name="Content" class="form-control" id="Content" rows="3"></textarea>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Comment" />
+        </div>
+    </form>
+</div>
+<hr />
+<div>
+    @foreach (var comment in this.Model.Comments)
+    {
+        var user = await this.UserManager.FindByIdAsync(comment.UserId);
+        <div class="card mb-3">
+            <div class="card-body">
+                <strong class="text-success">@user.UserName</strong>
+                <span class="text-muted">
+                    <small class="text-muted" style=" text-align: right;">@comment.CreatedOn.ToString("dd-MM-yyyy")</small>
+                </span>
+                <hr />
+                <h6>
+                    @comment.Content
+                </h6>
+            </div>
+        </div>
+    }
+</div>
 
-    
-       
+
