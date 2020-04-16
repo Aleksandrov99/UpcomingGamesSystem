@@ -16,6 +16,15 @@
         <div class="col-md-8">
             <div class="card-body">
                 <h1 class="card-title" style="text-align: center">@Model.Title</h1>
+                <form asp-controller="User" asp-action="AddFollower" method="post">
+                    <input type="hidden" name="GameId" value="@this.Model.Id" />
+                    <input type="hidden" name="UserId" value="@this.UserManager.GetUserId(this.User)" />
+                    <div>
+                        <p align="right">
+                            <input type="submit" class="btn btn-primary" value="Follow" />
+                        </p>
+                    </div>
+                </form>
                 <h5 class="card-text">Category: @Model.CategoryName</h5>
                 <h5 class="card-text">Description:</h5>
                 <h5 class="card-text">@Model.Description</h5>
