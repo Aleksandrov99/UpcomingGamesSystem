@@ -95,5 +95,71 @@
 
             return game;
         }
+
+        public AllGamesViewModel GetTop5GamesByComments()
+        {
+            var games = this.gamesRepository.All()
+                .OrderBy(x => x.Comments.Count())
+                .Take(5)
+                .Select(x => new HomePageGameViewModel
+                {
+                    Id = x.Id,
+                    PictureUrl = x.PictureUrl,
+                    ReleaseDate = x.ReleaseDate,
+                    Title = x.Title,
+                })
+                .OrderBy(x => x.ReleaseDate)
+                .ToList();
+
+            var allGames = new AllGamesViewModel
+            {
+                Games = games,
+            };
+
+            return allGames;
+        }
+
+        public AllGamesViewModel GetTop5GamesByFollow()
+        {
+            var games = this.gamesRepository.All()
+                .OrderBy(x => x.Followers.Count())
+                .Take(5)
+                .Select(x => new HomePageGameViewModel
+                {
+                    Id = x.Id,
+                    PictureUrl = x.PictureUrl,
+                    ReleaseDate = x.ReleaseDate,
+                    Title = x.Title,
+                })
+                .OrderBy(x => x.ReleaseDate)
+                .ToList();
+
+            var allGames = new AllGamesViewModel
+            {
+                Games = games,
+            };
+
+            return allGames;
+        }
+
+        public async Task UpdateGames()
+        {
+            var allGames = this.gamesRepository.All().ToList();
+
+            var date = DateTime.UtcNow;
+
+            foreach (var game in allGames)
+            {
+                if (game.ReleaseDate <= date)
+                {
+                    var gameUpdate = this.gamesRepository.All()
+                        .Where(x => x.Id == game.Id)
+                        .FirstOrDefault();
+
+                    this.gamesRepository.Delete(gameUpdate);
+                    await this.gamesRepository.SaveChangesAsync();
+                }
+            }
+        }
     }
 }

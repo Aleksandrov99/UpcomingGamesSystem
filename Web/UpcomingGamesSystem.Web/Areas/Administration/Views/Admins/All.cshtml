@@ -1,6 +1,6 @@
 ﻿@model UpcomingGamesSystem.Web.ViewModels.Administration.AllAdminsViewModel
 @{
-    ViewData["Title"] = "All";
+    ViewData["Title"] = "Admins Page";
 }
 
 @foreach (var admin in Model.Admins)
@@ -10,5 +10,5 @@
         <hr />
     </div>
 }
-<a asp-controller="Admins" asp-action="RemoveRole" class="btn btn-primary">Demote to User.</a>
+<a asp-controller="Admins" asp-action="RemoveRole" class="btn btn-primary">Demote to User</a>
 

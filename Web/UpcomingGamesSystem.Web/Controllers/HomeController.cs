@@ -1,6 +1,7 @@
 ﻿namespace UpcomingGamesSystem.Web.Controllers
 {
     using System.Diagnostics;
+    using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
     using UpcomingGamesSystem.Services.Data;
@@ -15,11 +16,11 @@
             this.gamesService = gamesService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var games = this.gamesService.GetAllGames();
+            await this.gamesService.UpdateGames();
 
-            return this.View(games);
+            return this.View();
         }
 
         public IActionResult Privacy()

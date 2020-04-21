@@ -19,6 +19,13 @@
             this.gamesService = gamesService;
         }
 
+        public IActionResult All()
+        {
+            var games = this.gamesService.GetAllGames();
+
+            return this.View(games);
+        }
+
         [Authorize]
         public IActionResult Create()
         {

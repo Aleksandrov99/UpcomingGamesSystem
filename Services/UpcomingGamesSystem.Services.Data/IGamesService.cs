@@ -15,5 +15,11 @@
         AllGamesViewModel GetAllGames();
 
         Task DeleteGameAsync(int gameId);
+
+        AllGamesViewModel GetTop5GamesByFollow();
+
+        AllGamesViewModel GetTop5GamesByComments();
+
+        Task UpdateGames();
     }
 }
