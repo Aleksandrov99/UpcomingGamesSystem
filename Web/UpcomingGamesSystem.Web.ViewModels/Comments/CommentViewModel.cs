@@ -5,7 +5,7 @@
     using UpcomingGamesSystem.Data.Models;
     using UpcomingGamesSystem.Services.Mapping;
 
-    public class CommentViewModel : IMapFrom<Comment>
+    public class CommentViewModel : IMapFrom<Comment>, IMapTo<Comment>
     {
         public DateTime CreatedOn { get; set; }
 

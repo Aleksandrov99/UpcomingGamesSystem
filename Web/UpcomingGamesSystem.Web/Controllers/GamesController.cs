@@ -56,5 +56,20 @@
 
             return this.View(gameViewModel);
         }
+
+        [Authorize(Roles = "Administrator")]
+        public IActionResult DeleteGame()
+        {
+            return this.Redirect("/");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> DeleteGame(int gameId)
+        {
+            await this.gamesService.DeleteGameAsync(gameId);
+
+            return this.Redirect("/");
+        }
     }
 }

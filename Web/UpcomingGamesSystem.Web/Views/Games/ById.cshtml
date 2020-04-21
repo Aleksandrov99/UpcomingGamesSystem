@@ -1,6 +1,6 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using UpcomingGamesSystem.Common
+@using Microsoft.AspNetCore.Identity
 @using UpcomingGamesSystem.Data.Models
-@using System.Threading.Tasks;
 @model UpcomingGamesSystem.Web.ViewModels.Games.GameViewModel
 @inject UserManager<ApplicationUser> UserManager
 @{
@@ -16,15 +16,30 @@
         <div class="col-md-8">
             <div class="card-body">
                 <h1 class="card-title" style="text-align: center">@Model.Title</h1>
-                <form asp-controller="User" asp-action="AddFollower" method="post">
-                    <input type="hidden" name="GameId" value="@this.Model.Id" />
-                    <input type="hidden" name="UserId" value="@this.UserManager.GetUserId(this.User)" />
-                    <div>
-                        <p align="right">
-                            <input type="submit" class="btn btn-primary" value="Follow" />
-                        </p>
-                    </div>
-                </form>
+                <div style="float: right; width: 200px">
+                    <form asp-controller="User" asp-action="AddFollower" method="post">
+                        <input type="hidden" name="GameId" value="@this.Model.Id" />
+                        <input type="hidden" name="UserId" value="@this.UserManager.GetUserId(this.User)" />
+                        <div>
+                            <p align="right">
+                                <input type="submit" class="btn btn-primary" value="Follow" />
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                <div style="float: right; width: 200px">
+                    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                    {
+                        <form asp-controller="Games" asp-action="DeleteGame" method="post">
+                            <input type="hidden" name="GameId" value="@this.Model.Id" />
+                            <div>
+                                <p align="right">
+                                    <input type="submit" class="btn btn-primary" value="Delete" />
+                                </p>
+                            </div>
+                        </form>
+                    }
+                </div>
                 <h5 class="card-text">Category: @Model.CategoryName</h5>
                 <h5 class="card-text">Description:</h5>
                 <h5 class="card-text">@Model.Description</h5>
@@ -58,6 +73,21 @@
                 <span class="text-muted">
                     <small class="text-muted" style=" text-align: right;">@comment.CreatedOn.ToString("dd-MM-yyyy")</small>
                 </span>
+                @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                {
+                    <div style="float: right; width: 200px">
+                        <form asp-controller="Comments" asp-action="DeleteComment" method="post">
+                            <input type="hidden" name="CommentContent" value="@comment.Content" />
+                            <input type="hidden" name="UserId" value="@comment.UserId" />
+                            <input type="hidden" name="GameId" value="@this.Model.Id" />
+                            <div>
+                                <p align="right">
+                                    <input type="submit" class="btn btn-primary" value="Delete" />
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                }
                 <hr />
                 <h6>
                     @comment.Content

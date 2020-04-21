@@ -33,7 +33,22 @@
 
             await this.commentsServices.CreateAsync(input);
 
-            return this.RedirectToAction("ById", "Games");
+            return this.Redirect("/");
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public IActionResult DeleteComment()
+        {
+            return this.Redirect("/");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> DeleteComment(string commentContent, string userId, int gameId)
+        {
+            await this.commentsServices.DeleteCommentAsync(commentContent, userId, gameId);
+
+            return this.Redirect("/");
         }
     }
 }

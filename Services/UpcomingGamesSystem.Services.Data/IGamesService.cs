@@ -13,5 +13,7 @@
         GameViewModel GetGameById(int id);
 
         AllGamesViewModel GetAllGames();
+
+        Task DeleteGameAsync(int gameId);
     }
 }

@@ -36,6 +36,16 @@
             await this.gamesRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteGameAsync(int gameId)
+        {
+            var game = this.gamesRepository.All()
+                .Where(x => x.Id == gameId)
+                .FirstOrDefault();
+
+            this.gamesRepository.Delete(game);
+            await this.gamesRepository.SaveChangesAsync();
+        }
+
         public AllGamesViewModel GetAllGames()
         {
             var games = this.gamesRepository.All()
