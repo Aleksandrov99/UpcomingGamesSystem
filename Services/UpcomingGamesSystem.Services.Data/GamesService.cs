@@ -96,10 +96,10 @@
             return game;
         }
 
-        public AllGamesViewModel GetTop5GamesByComments()
+        public HotGamesViewModel TopGames()
         {
-            var games = this.gamesRepository.All()
-                .OrderBy(x => x.Comments.Count())
+            var gamesFollowers = this.gamesRepository.All()
+                .OrderByDescending(x => x.Followers.Count())
                 .Take(5)
                 .Select(x => new HomePageGameViewModel
                 {
@@ -108,21 +108,10 @@
                     ReleaseDate = x.ReleaseDate,
                     Title = x.Title,
                 })
-                .OrderBy(x => x.ReleaseDate)
                 .ToList();
 
-            var allGames = new AllGamesViewModel
-            {
-                Games = games,
-            };
-
-            return allGames;
-        }
-
-        public AllGamesViewModel GetTop5GamesByFollow()
-        {
-            var games = this.gamesRepository.All()
-                .OrderBy(x => x.Followers.Count())
+            var gamesComments = this.gamesRepository.All()
+                .OrderByDescending(x => x.Comments.Count())
                 .Take(5)
                 .Select(x => new HomePageGameViewModel
                 {
@@ -131,12 +120,12 @@
                     ReleaseDate = x.ReleaseDate,
                     Title = x.Title,
                 })
-                .OrderBy(x => x.ReleaseDate)
                 .ToList();
 
-            var allGames = new AllGamesViewModel
+            var allGames = new HotGamesViewModel
             {
-                Games = games,
+                TopCommentsGames = gamesComments,
+                TopFollowersGames = gamesFollowers,
             };
 
             return allGames;

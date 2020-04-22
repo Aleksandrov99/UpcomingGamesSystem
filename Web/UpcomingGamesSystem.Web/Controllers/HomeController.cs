@@ -20,7 +20,9 @@
         {
             await this.gamesService.UpdateGames();
 
-            return this.View();
+            var viewModel = this.gamesService.TopGames();
+
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()

@@ -49,7 +49,7 @@
 
             await this.gamesService.CreateAsync(input.Title, input.PictureUrl, input.ReleaseDate, input.CompanyName, input.Description, input.CategoryId);
 
-            return this.Redirect("/Home/Index");
+            return this.Redirect("/Games/All");
         }
 
         public IActionResult ById(int id)
@@ -58,7 +58,7 @@
 
             if (gameViewModel == null)
             {
-                return this.Redirect("/");
+                return this.Redirect("/Games/All");
             }
 
             return this.View(gameViewModel);
@@ -67,7 +67,7 @@
         [Authorize(Roles = "Administrator")]
         public IActionResult DeleteGame()
         {
-            return this.Redirect("/");
+            return this.Redirect("/Games/All");
         }
 
         [HttpPost]
@@ -76,7 +76,7 @@
         {
             await this.gamesService.DeleteGameAsync(gameId);
 
-            return this.Redirect("/");
+            return this.Redirect("/Games/All");
         }
     }
 }

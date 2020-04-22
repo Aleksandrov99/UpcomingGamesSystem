@@ -16,9 +16,7 @@
 
         Task DeleteGameAsync(int gameId);
 
-        AllGamesViewModel GetTop5GamesByFollow();
-
-        AllGamesViewModel GetTop5GamesByComments();
+        HotGamesViewModel TopGames();
 
         Task UpdateGames();
     }

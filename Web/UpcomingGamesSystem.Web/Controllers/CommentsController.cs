@@ -19,7 +19,7 @@
         [Authorize]
         public IActionResult CreateComment()
         {
-            return this.Redirect("/");
+            return this.Redirect("/Games/All");
         }
 
         [Authorize]
@@ -33,13 +33,13 @@
 
             await this.commentsServices.CreateAsync(input);
 
-            return this.Redirect("/");
+            return this.Redirect("/Games/All");
         }
 
         [Authorize(Roles = "Administrator")]
         public IActionResult DeleteComment()
         {
-            return this.Redirect("/");
+            return this.Redirect("/Games/All");
         }
 
         [HttpPost]
@@ -48,7 +48,7 @@
         {
             await this.commentsServices.DeleteCommentAsync(commentContent, userId, gameId);
 
-            return this.Redirect("/");
+            return this.Redirect("/Games/All");
         }
     }
 }

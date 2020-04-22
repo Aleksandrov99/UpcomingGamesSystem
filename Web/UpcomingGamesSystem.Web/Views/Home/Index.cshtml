@@ -1,8 +1,54 @@
-﻿@{
+﻿@model UpcomingGamesSystem.Web.ViewModels.Games.HotGamesViewModel
+@{
     this.ViewData["Title"] = "Home Page";
 }
 
-    <div class="text-center">
-        <h1>See all games here:</h1>
-        <a asp-controller="Games" asp-action="All" class="btn btn-primary">Games</a>
+<div class="text-center">
+    <h1>See all games here:</h1>
+    <a asp-controller="Games" asp-action="All" class="btn btn-primary">Games</a>
+</div>
+<hr />
+<div>
+    <div style="float:right">
+        <div style="text-align:center">
+            <h4>Most Commented Games:</h4>
+        </div>
+        @foreach (var game in Model.TopCommentsGames)
+        {
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="card" style="max-width: 18rem;">
+                        <img class="card-img-top" src="@game.PictureUrl" height="140" width="42">
+                        <div class="card-body">
+                            <h5 class="card-title">@game.Title</h5>
+                            <p class="card-text">Release Date: @game.ReleaseDate.ToString("dd-MM-yyyy")</p>
+                            <a asp-controller="Games" asp-action="ById" asp-route-id="@game.Id" class="btn btn-primary">Go to Game page</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        }
+        <hr />
     </div>
+    <div style="float:left">
+        <div style="text-align:center">
+            <h4>Most Followed Games:</h4>
+        </div>
+        @foreach (var game in Model.TopFollowersGames)
+        {
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="card" style="max-width: 18rem;">
+                        <img class="card-img-top" src="@game.PictureUrl" height="140" width="42">
+                        <div class="card-body">
+                            <h5 class="card-title">@game.Title</h5>
+                            <p class="card-text">Release Date: @game.ReleaseDate.ToString("dd-MM-yyyy")</p>
+                            <a asp-controller="Games" asp-action="ById" asp-route-id="@game.Id" class="btn btn-primary">Go to Game page</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        }
+        <hr />
+    </div>
+</div>
