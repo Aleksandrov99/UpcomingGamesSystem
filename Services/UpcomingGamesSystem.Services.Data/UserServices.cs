@@ -32,5 +32,25 @@
                 await this.followerRepository.SaveChangesAsync();
             }
         }
+
+        public AllFollowedGamesViewModel AllFollowedGamesForUser(string userId)
+        {
+            var games = this.followerRepository.All().Where(x => x.UserId == userId)
+                .Select(x => new UserDetailsGamesViewModel
+                {
+                    Title = x.Game.Title,
+                    ReleaseDate = x.Game.ReleaseDate,
+                    PictureUrl = x.Game.PictureUrl,
+                })
+                .OrderBy(x => x.ReleaseDate)
+                .ToList();
+
+            var allGames = new AllFollowedGamesViewModel
+            {
+                AllGames = games,
+            };
+
+            return allGames;
+        }
     }
 }

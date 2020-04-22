@@ -28,12 +28,12 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(input);
+                return this.Redirect("/Games/ById/" + input.GameId);
             }
 
             await this.commentsServices.CreateAsync(input);
 
-            return this.Redirect("/Games/All");
+            return this.Redirect("/Games/ById/" + input.GameId);
         }
 
         [Authorize(Roles = "Administrator")]
@@ -48,7 +48,7 @@
         {
             await this.commentsServices.DeleteCommentAsync(commentContent, userId, gameId);
 
-            return this.Redirect("/Games/All");
+            return this.Redirect("/Games/ById/" + gameId);
         }
     }
 }

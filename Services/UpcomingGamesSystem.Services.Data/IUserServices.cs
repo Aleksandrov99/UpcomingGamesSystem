@@ -7,5 +7,7 @@
     public interface IUserServices
     {
         Task AddUserToFollower(UserFollowerViewModel input);
+
+        AllFollowedGamesViewModel AllFollowedGamesForUser(string userId);
     }
 }

@@ -3,23 +3,31 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using UpcomingGamesSystem.Data.Models;
     using UpcomingGamesSystem.Services.Data;
     using UpcomingGamesSystem.Web.ViewModels.User;
 
     public class UserController : Controller
     {
         private readonly IUserServices userServices;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public UserController(IUserServices userServices)
+        public UserController(IUserServices userServices, UserManager<ApplicationUser> userManager)
         {
             this.userServices = userServices;
+            this.userManager = userManager;
         }
 
         [Authorize]
         public IActionResult Details()
         {
-            return this.View();
+            var userId = this.userManager.GetUserId(this.User);
+
+            var viewModel = this.userServices.AllFollowedGamesForUser(userId);
+
+            return this.View(viewModel);
         }
 
         [Authorize]
